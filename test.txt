@@ -1,7 +1,6 @@
 #page
     .logo
     ul#navigation
-        li*5
-            a{Item $}
+        li*5>a{Item $}
     header
         p{nothing}

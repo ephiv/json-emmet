@@ -19,8 +19,6 @@ def lexer(lines:list[str]):
                     line.append(tok)
                 if j != '\n': line.append(j)
                 tok = ''
-            if j in ">^+":
-                warnings.warn("some emmet symbols for parent-child is found. please don't use indentation if you plan to use these symbols")
         tokens.append(line)
     
     indent = [' ' for i in range(4)]
@@ -31,6 +29,7 @@ def lexer(lines:list[str]):
             line.insert(indmatches[0], '{tab}')
             indmatches = match.match(indent, line)
         inds = line.count('{tab}')
+        if [e for e in line if e in '>^+']: line.insert(inds, '('); line.append(')')
         fintokens.append([inds, line]) if inds == 0 else fintokens.append([inds, line[inds:]])
 
     emmet_str = ''
