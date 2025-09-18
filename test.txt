@@ -1,2 +1,7 @@
 #page
-    div.logo+ul#navigation>li*5>a{Item $}
+    .logo
+    ul#navigation
+        li*5
+            a{Item $}
+    header
+        p{nothing}
